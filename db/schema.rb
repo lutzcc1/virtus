@@ -44,9 +44,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_214207) do
     t.bigint "exercise_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["exercise_id"], name: "index_routine_exercises_on_exercise_id"
     t.index ["routine_id", "exercise_id"], name: "idx_routine_exercises_unique", unique: true
-    t.index ["routine_id"], name: "index_routine_exercises_on_routine_id"
   end
 
   create_table "routine_muscle_groups", force: :cascade do |t|
@@ -56,7 +54,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_214207) do
     t.datetime "updated_at", null: false
     t.index ["muscle_group_id"], name: "index_routine_muscle_groups_on_muscle_group_id"
     t.index ["routine_id", "muscle_group_id"], name: "idx_routine_muscle_groups_unique", unique: true
-    t.index ["routine_id"], name: "index_routine_muscle_groups_on_routine_id"
   end
 
   create_table "routines", force: :cascade do |t|
@@ -74,8 +71,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_214207) do
     t.integer "reps_goal", null: false
     t.integer "total_reps", null: false
     t.bigint "routine_id", null: false
+    t.bigint "exercise_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_sets_on_exercise_id"
     t.index ["routine_id"], name: "index_sets_on_routine_id"
   end
 
@@ -95,5 +94,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_214207) do
   add_foreign_key "routine_muscle_groups", "routines"
   add_foreign_key "routines", "routines", column: "template_id"
   add_foreign_key "routines", "users"
+  add_foreign_key "sets", "exercises"
   add_foreign_key "sets", "routines"
 end
