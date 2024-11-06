@@ -7,6 +7,6 @@ class CreateRoutineExercises < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :routine_exercises, [:routine_id, :exercise_id], unique: true, name: 'idx_routine_exercises_unique'
+    add_index :routine_exercises, [ :routine_id, :exercise_id ], unique: true, name: 'idx_routine_exercises_unique'
   end
 end

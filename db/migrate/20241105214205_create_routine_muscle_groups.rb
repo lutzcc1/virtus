@@ -7,6 +7,6 @@ class CreateRoutineMuscleGroups < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :routine_muscle_groups, [:routine_id, :muscle_group_id], unique: true, name: 'idx_routine_muscle_groups_unique'
+    add_index :routine_muscle_groups, [ :routine_id, :muscle_group_id ], unique: true, name: 'idx_routine_muscle_groups_unique'
   end
 end
