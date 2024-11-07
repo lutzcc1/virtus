@@ -1,6 +1,6 @@
 class Routine < ApplicationRecord
   belongs_to :user
-  belongs_to :template, class_name: 'Routine', optional: true
+  belongs_to :template, class_name: "Routine", optional: true
   has_many :routine_exercises, dependent: :destroy
   has_many :exercises, through: :routine_exercises
   has_many :routine_muscle_groups, dependent: :destroy
