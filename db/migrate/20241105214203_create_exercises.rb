@@ -3,7 +3,7 @@ class CreateExercises < ActiveRecord::Migration[7.1]
     create_table :exercises do |t|
       t.string :name, null: false
       t.references :muscle_group, null: false, foreign_key: true
-      t.references :equipment, foreign_key: true
+      t.references :equipment, null: false, foreign_key: true
 
       t.timestamps
     end
