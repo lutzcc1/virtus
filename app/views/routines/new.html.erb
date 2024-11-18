@@ -1,0 +1,9 @@
+<div>
+  <p>Create new routine </p>
+  <%= form_with model: @routine, url: routine_path(@routine), class: "flex flex-col items-center" do |form| %>
+    <input type="text" name="routine[name]" value="Name your routine"/>
+    <input type="text" name="routine[type]" value="Name your routine"/>
+  <%end%>
+</div>
+
+
