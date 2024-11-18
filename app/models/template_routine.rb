@@ -1,0 +1,2 @@
+class TemplateRoutine < Routine
+end
