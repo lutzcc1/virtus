@@ -1,0 +1,7 @@
+<div>
+  <% @routines.each do |routine| %>
+    Name: <%= routine.name %>
+<%end%>
+
+<%= link_to "Create New Routine", new_routine_path %>
+</div>

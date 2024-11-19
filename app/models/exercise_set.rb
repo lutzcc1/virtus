@@ -1,4 +1,4 @@
-class Set < ApplicationRecord
+class ExerciseSet < ApplicationRecord
   belongs_to :routine
   belongs_to :exercise
 

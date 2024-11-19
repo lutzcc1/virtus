@@ -21,6 +21,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_214207) do
     t.index ["name"], name: "index_equipment_on_name", unique: true
   end
 
+  create_table "exercise_sets", force: :cascade do |t|
+    t.integer "reps_goal", null: false
+    t.integer "total_reps"
+    t.bigint "routine_id", null: false
+    t.bigint "exercise_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_exercise_sets_on_exercise_id"
+    t.index ["routine_id"], name: "index_exercise_sets_on_routine_id"
+  end
+
   create_table "exercises", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "muscle_group_id", null: false
@@ -67,17 +78,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_214207) do
     t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
-  create_table "sets", force: :cascade do |t|
-    t.integer "reps_goal", null: false
-    t.integer "total_reps"
-    t.bigint "routine_id", null: false
-    t.bigint "exercise_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["exercise_id"], name: "index_sets_on_exercise_id"
-    t.index ["routine_id"], name: "index_sets_on_routine_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password", null: false
@@ -86,6 +86,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_214207) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "exercise_sets", "exercises"
+  add_foreign_key "exercise_sets", "routines"
   add_foreign_key "exercises", "equipment"
   add_foreign_key "exercises", "muscle_groups"
   add_foreign_key "routine_exercises", "exercises"
@@ -94,6 +96,4 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_214207) do
   add_foreign_key "routine_muscle_groups", "routines"
   add_foreign_key "routines", "routines", column: "template_id"
   add_foreign_key "routines", "users"
-  add_foreign_key "sets", "exercises"
-  add_foreign_key "sets", "routines"
 end

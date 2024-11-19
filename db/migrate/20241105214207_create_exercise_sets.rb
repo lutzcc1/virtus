@@ -1,6 +1,6 @@
-class CreateSets < ActiveRecord::Migration[7.1]
+class CreateExerciseSets < ActiveRecord::Migration[7.1]
   def change
-    create_table :sets do |t|
+    create_table :exercise_sets do |t|
       t.integer :reps_goal, null: false
       t.integer :total_reps
       t.references :routine, null: false, foreign_key: true
