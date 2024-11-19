@@ -8,3 +8,4 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 Rake::Task["create_users:execute"].invoke
+Rake::Task["create_routines:execute"].invoke

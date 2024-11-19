@@ -21,7 +21,8 @@ namespace :create_users do
     ]
 
     users.each do |user|
-      User.create!(user)
+      user = User.create!(user)
+      puts "User with email #{user.email} was successfully created"
     end
   end
 end
