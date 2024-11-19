@@ -5,6 +5,7 @@ namespace :create_routines do
     Rake::Task["create_routines:routines"].invoke
     Rake::Task["create_routines:equipments"].invoke
     Rake::Task["create_routines:exercises"].invoke
+    Rake::Task["create_routines:sets"].invoke
   end
 
   desc "Populate DB with Muscle Groups"
@@ -99,6 +100,18 @@ namespace :create_routines do
       )
       RoutineExercise.create!(routine: routine, exercise: exercise)
       puts "Exercise with name #{exercise.name} successfully created"
+    end
+  end
+
+  desc "Populate DB with Sets"
+  task :sets do |t, args|
+    Routine.all.each do |routine|
+      routine.exercises.each do |exercise|
+        4.times do |i|
+          ExerciseSet.create!(routine: routine, exercise: exercise, reps_goal: 8, total_reps: 0)
+        end
+        puts "Sets successfully added to exercise #{exercise.name} in routine #{routine.name}"
+      end
     end
   end
 end
