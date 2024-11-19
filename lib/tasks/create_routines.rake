@@ -25,38 +25,14 @@ namespace :create_routines do
   desc "Populate DB with Routines"
   task :routines do |t, args|
     routines = [
-      {
-        name: "Chest Day",
-        muscle_groups: [ "Chest" ]
-      },
-      {
-        name: "Arm Day",
-        muscle_groups: [ "Arms", "Triceps" ]
-      },
-      {
-        name: "Leg Day",
-        muscle_groups: [ "Calves", "Legs", "Tighs", "Quads", "Hamstrings", "Glutes" ]
-      },
-      {
-        name: "Shoulders",
-        muscle_groups: [ "Shoulders", "Upper Back" ]
-      },
-      {
-        name: "Abs",
-        muscle_groups: [ "Abs" ]
-      },
-      {
-        name: "Back Day",
-        muscle_groups: [ "Shoulders", "Back", "Upper Back", "Lower Back", "Middle Back" ]
-      },
-      {
-        name: "Upper Body",
-        muscle_groups: [ "Chest", "Arms", "Triceps", "Shoulders", "Back", "Lower Back", "Upper Back", "Middle Back" ]
-      },
-      {
-        name: "Lower Body",
-        muscle_groups: [ "Calves", "Legs", "Tighs", "Quads", "Hamstrings", "Glutes" ]
-      }
+      { name: "Chest Day", muscle_groups: [ "Chest" ] },
+      { name: "Arm Day", muscle_groups: [ "Arms", "Triceps" ] },
+      { name: "Leg Day", muscle_groups: [ "Calves", "Legs", "Tighs", "Quads", "Hamstrings", "Glutes" ] },
+      { name: "Shoulders", muscle_groups: [ "Shoulders", "Upper Back" ] },
+      { name: "Abs", muscle_groups: [ "Abs" ] },
+      { name: "Back Day", muscle_groups: [ "Shoulders", "Back", "Upper Back", "Lower Back", "Middle Back" ] },
+      { name: "Upper Body", muscle_groups: [ "Chest", "Arms", "Triceps", "Shoulders", "Back", "Lower Back", "Upper Back", "Middle Back" ] },
+      { name: "Lower Body", muscle_groups: [ "Calves", "Legs", "Tighs", "Quads", "Hamstrings", "Glutes" ] }
     ]
 
     routines.each do |routine|
