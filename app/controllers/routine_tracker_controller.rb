@@ -9,6 +9,10 @@ class RoutineTrackerController < ApplicationController
     @routine = Routine.find_by(id: params[:id])
   end
 
+  def update
+    binding.pry
+  end
+
   private
   def permitted_params
   end
