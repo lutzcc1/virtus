@@ -1,14 +1,16 @@
 class RoutinesController < ApplicationController
   def new
-    @routine = Routine.new
   end
 
-  def index
-    @routines = Routine.all
+  def create
+  end
+
+  def show
+    @routine = Routine.find_by(id: params[:id])
   end
 
   private
   def permitted_params
-    params.require(:routine).permit(:name, :type)
+    params.require(:exercise).permit(:set_weight, :set_reps)
   end
 end

@@ -1,0 +1,42 @@
+<div class="min-h-screen bg-gray-100 p-4 flex flex-col items-center">
+  <h1 class="text-2xl font-bold mb-6 text-center"><%= @routine.name %> Routine</h1>
+
+  <%= form_with model: @routine, url:routine_path(@routine), method: :patch, class: "w-full max-w-md flex flex-col items-center", local: true do |form| %>
+    <% @routine.exercises.each do |exercise| %>
+      <div class="w-full bg-white shadow-md rounded-lg p-4 mb-4">
+        <h2 class="text-lg font-semibold mb-3"><%= exercise.name %></h2>
+        
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b">
+              <th class="pb-2">Set</th>
+              <th class="pb-2">Previous</th>
+              <th class="pb-2">Weight</th>
+              <th class="pb-2">Reps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% exercise.sets.each_with_index do |set, index| %>
+              <tr>
+                <td class="py-2">S<%= index + 1 %></td>
+                <td class="py-2 text-center">-</td>
+                <td class="py-2">
+                  <input id="weight" name=<%="exercise[#{exercise.id}][set_weight][]"%> 
+                    value=<%= set.weight_goal %> class="w-14 border rounded px-2" type="number"> Kg
+                </td>
+                <td class="py-2">
+                  <input id="reps" name=<%="exercise[#{exercise.id}][set_reps][]"%> 
+                    value=<%= set.reps_goal%> class="w-14 border rounded px-2" type="number"> Reps
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+
+    <button type="submit" class="mt-6 px-6 py-3 bg-orange-500 text-white font-bold rounded-lg shadow-lg">
+      Finish
+    </button>
+  <% end %>
+</div>

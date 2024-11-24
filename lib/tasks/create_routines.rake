@@ -108,7 +108,7 @@ namespace :create_routines do
     Routine.all.each do |routine|
       routine.exercises.each do |exercise|
         4.times do |i|
-          ExerciseSet.create!(routine: routine, exercise: exercise, reps_goal: 8, total_reps: 0)
+          ExerciseSet.create!(routine: routine, exercise: exercise, reps_goal: 8, total_reps: 0, weight_goal: 20, final_weight: 0)
         end
         puts "Sets successfully added to exercise #{exercise.name} in routine #{routine.name}"
       end
